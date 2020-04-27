@@ -42,9 +42,9 @@ describe CustomerSelection do
   end
   
   describe "#place_order" do
-    let(:input1) { StringIO.new("croissant\n 2\n Y\n juice\n 3\n N\n") }
+    let(:input) { StringIO.new("croissant\n 2\n Y\n juice\n 3\n N\n") }
     it "receives user input - dish" do
-      $stdin = input1
+      $stdin = input
       expect { subject.place_order }.to output("Please enter dish:\nPlease enter quantity:\nContinue?\nPlease enter dish:\nPlease enter quantity:\nContinue?\n").to_stdout
       $stdin = STDIN
     end

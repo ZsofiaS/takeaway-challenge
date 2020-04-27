@@ -10,7 +10,6 @@ class CustomerSelection
     @menu = menu
   end  
     
-
   def select_dish
     puts "Please enter dish:"
     @dish = gets.chomp
@@ -32,13 +31,11 @@ class CustomerSelection
   #       @selection[@dish] = @quantity
   #     select_continue
       
-      
   #     select_dish
   #     select_quantity
   #     select_continue
   #     @selection[@dish] = @quantity
-      
-      
+  
   #   # @dish = nil
   #     #@quantity = nil
   # end
@@ -47,12 +44,12 @@ class CustomerSelection
     loop do
       select_dish
       select_quantity
-      @selection[@dish] = @quantity
       #@dish = nil
       #@quantity = nil
       select_continue
+      @selection[@dish] = @quantity
       p @selection
-      exit if @continue == "N"
+      break if @continue == "N"
     end
   end
   
