@@ -1,6 +1,6 @@
 class CustomerSelection
     
-  attr_reader :selection, :dish, :quantity, :continue, :menu
+  attr_reader :selection, :dish, :quantity, :continue, :menu, :total
     
   def initialize(menu = Menu.new)
     @selection = {}
@@ -8,6 +8,7 @@ class CustomerSelection
     @quantity = nil
     @continue = "Y"
     @menu = menu
+    @total = 0
   end  
     
   def select_dish
@@ -25,63 +26,31 @@ class CustomerSelection
     @continue = gets.chomp
   end
   
-  # def place_order  
-  #       select_dish
-  #     select_quantity
-  #       @selection[@dish] = @quantity
-  #     select_continue
-      
-  #     select_dish
-  #     select_quantity
-  #     select_continue
-  #     @selection[@dish] = @quantity
-  
-  #   # @dish = nil
-  #     #@quantity = nil
-  # end
-  
   def place_order
     loop do
       select_dish
       select_quantity
-      #@dish = nil
-      #@quantity = nil
       select_continue
       @selection[@dish] = @quantity
-      p @selection
       break if @continue == "N"
     end
   end
   
-  
-  # def place_order
-    
-  #   2.times do
-  #     select_dish
-  #     select_quantity
-  #     @selection[@dish] = @quantity
-  #     #@dish = nil
-  #     #@quantity = nil
-  #     select_continue
-  #     #p @continue
-  #   end
-  # end
-  
-  #   def place_order
-  #   while_continue = "Y"
-  #   while true do
-  #     select_dish
-  #     select_quantity
-  #     @selection[@dish] = @quantity
-  #     #@dish = nil
-  #     #@quantity = nil
-  #     select_continue
-  #     while_continue = @continue
-  #   end
-  # end
-  
   def print_order
-    @selection
+    @selection.each do |key, value|
+      puts "#{key}: #{value}x £#{@menu.listOfDishes[key.to_sym] * value.to_i}"
+   end
+   puts "Total: £#{calculate_total}"
+  end
+  
+  private
+  
+  def calculate_total
+    @total = 0
+    @selection.each do |key, value|
+      @total += @menu.listOfDishes[key.to_sym] * value.to_i
+    end
+    @total
   end
   
 end

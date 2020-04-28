@@ -1,15 +1,26 @@
 class Restaurant
     
-    attr_reader :menu
+    attr_reader :menu, :order
     
-    def initialize (menu = Menu.new)
+    def initialize (menu = Menu.new, order = CustomerSelection.new)
       @menu = menu
+      @order = order
     end
     
     def show_menu
       @menu.show
     end
     
-    def select_items 
+    def select_items
+      @order.place_order
+    end
+    
+    def summary
+      @order.print_order
+    end
+    
+    def checkout(amount)
+      raise "Incorrect amount" if amount != @order.total
+      "Order confirmed!"
     end
 end

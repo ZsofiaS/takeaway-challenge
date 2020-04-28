@@ -50,10 +50,10 @@ describe CustomerSelection do
     end
   end
   
-  describe "#print_order" do
-    it "prints selected dishes" do
-      expect(subject.print_order).to be_kind_of(Hash)
-    end
-  end
+  # describe "#print_order" do
+  #   it "prints selected dishes" do
+  #     expect(subject.print_order).to eq "Total: £6"
+  #   end
+  # end
   
 end
