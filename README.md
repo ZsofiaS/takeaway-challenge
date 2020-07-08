@@ -33,6 +33,18 @@ So that I am reassured that my order will be delivered on time
 I would like to receive a text such as "Thank you! Your order was placed and will be delivered before 18:52" after I have ordered
 ```
 
+How to run tests
+-------
+* Clone the repo
+* Navigate to the folder, and in the terminal run the following command:
+```
+gem install rspec
+```
+* Run the tests by running the following command:
+```
+rspec
+```
+
 Instructions
 -------
 
